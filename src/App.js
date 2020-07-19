@@ -3,18 +3,33 @@ import { render } from 'react-dom';
 import './App.css';
 
 export default class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            name: 'Football Animation'
-        };
-    }
+  constructor() {
+    super();
+    this.state = {
+      name: 'Football Animation'
+    };
+  }
 
-    render() {
-        return (
-            <div className="containter">
-                <img className="circle"/>
-            </div>
-        );
-    }
+  moveBall = () => {
+    let start = Date.now();
+    let football = document.querySelector(".circle")
+
+    let timer = setInterval(function () {
+      let interval = Date.now() - start;
+
+      football.style.top = interval / 3 + 'px'; // move element down by 3px
+
+      if (interval > 1000) clearInterval(timer); // stop animation
+
+    }, 1000 / 60);
+  }
+
+
+  render() {
+    return (
+      <div className="containter">
+        <img className="circle" onClick={this.moveBall} />
+      </div>
+    );
+  }
 }
