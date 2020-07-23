@@ -10,7 +10,7 @@ export default class App extends Component {
     };
   }
 
-  /*   moveBall = () => {
+/*     moveBall = () => {
       let start = Date.now();
       let football = document.querySelector(".circle")
   
@@ -22,23 +22,27 @@ export default class App extends Component {
         if (interval > 1000) clearInterval(timer); // stop animation
   
       }, 1000 / 60);
-    } */
+    }
+ */
 
-  //   moveBall = () => {
-  //     let start = Date.now();
-  //     let football = document.querySelector(".circle")
+ /*     moveBall = () => {
+      let start = Date.now();
+      let football = document.querySelector(".circle")
 
-  //     let timer = requestAnimationFrame(function animateBall() {
-  //         let interval = Date.now() - start;
+      let timer = requestAnimationFrame(function animateBall() {
+          let interval = Date.now() - start;
 
-  //         football.style.top = interval / 3 + 'px'; // move element down by 3px
+          football.style.top = interval / 3 + 'px'; // move element down by 3px
 
-  //         if (interval < 1000) requestAnimationFrame(animateBall); // stop animation
+          if (interval < 1000) requestAnimationFrame(animateBall); // stop animation
 
-  //     });
-  // }
+      });
+  }
+ */
 
-  // Returns a wapper for input function to reverse the bounce effect
+  /**
+   * Returns a wapper for input function to reverse the bounce effect
+  */
   easeOut = (animation) => {
     return (interval) => {
       return 1 - animation(1 - interval);
