@@ -5,6 +5,12 @@ Introduction
 ------------
 Animations at runtime can be implemented using `requestAnimationFrame` method for effective results and best performance. This project includes move and bounce animation with `setInterval` and `requestAnimationFrame` methods.
 
+Animations
+---------
+
+| ![bouncing ball](images/bounce_ball.gif?raw=true "bounce ball") | ![bouncing ball](images/move_ball.gif?raw=true "move ball") |
+|-------------------- | ------------------ |
+
 License
 -----------
 <details>
