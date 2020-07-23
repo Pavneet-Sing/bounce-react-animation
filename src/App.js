@@ -10,35 +10,50 @@ export default class App extends Component {
     };
   }
 
-/*     moveBall = () => {
-      let start = Date.now();
-      let football = document.querySelector(".circle")
-  
-      let timer = setInterval(function () {
-        let interval = Date.now() - start;
-  
-        football.style.top = interval / 3 + 'px'; // move element down by 3px
-  
-        if (interval > 1000) clearInterval(timer); // stop animation
-  
-      }, 1000 / 60);
-    }
- */
-
- /*     moveBall = () => {
-      let start = Date.now();
-      let football = document.querySelector(".circle")
-
-      let timer = requestAnimationFrame(function animateBall() {
+  /*     moveBall = () => {
+        let start = Date.now();
+        let football = document.querySelector(".circle")
+    
+        let timer = setInterval(function () {
           let interval = Date.now() - start;
-
+    
           football.style.top = interval / 3 + 'px'; // move element down by 3px
+    
+          if (interval > 1000) clearInterval(timer); // stop animation
+    
+        }, 1000 / 60);
+      }
+   */
 
-          if (interval < 1000) requestAnimationFrame(animateBall); // stop animation
+  /*     moveBall = () => {
+       let start = Date.now();
+       let football = document.querySelector(".circle")
+ 
+       let timer = requestAnimationFrame(function animateBall() {
+           let interval = Date.now() - start;
+ 
+           football.style.top = interval / 3 + 'px'; // move element down by 3px
+ 
+           if (interval < 1000) requestAnimationFrame(animateBall); // stop animation
+ 
+       });
+   }
+  */
 
-      });
+  animationHelper({ duration, render, interpolator }) {
+    // let bounceEaseOut = this.easeOut(this.bounce);
+    let start = Date.now();
+    let id = requestAnimationFrame(function animate(time) {
+      let interval = (Date.now() - start) / duration;
+      if (interval > 1) interval = 1;
+
+      render(interpolator(interval), interval)
+
+      if (interval < 1) {
+        requestAnimationFrame(animate);
+      }
+    })
   }
- */
 
   /**
    * Returns a wapper for input function to reverse the bounce effect
@@ -61,23 +76,34 @@ export default class App extends Component {
     }
   }
 
+  /*   bounceBall = () => {
+      let bounceEaseOut = this.easeOut(this.bounce);
+      let start = Date.now();
+      let football = document.querySelector(".circle")
+      let id = requestAnimationFrame(function animate(time) {
+        console.log(time)
+        let interval = (Date.now() - start) / 2000;
+        if (interval > 1) interval = 1;
+  
+        football.style.top = bounceEaseOut(interval) * 300 + 'px' // adjust the y axis
+        football.style.left = interval * 300 + 'px' // adjust the x axis
+  
+        if (interval < 1) {
+          requestAnimationFrame(animate);
+        }
+  
+      })
+    } */
+
   bounceBall = () => {
-    let bounceEaseOut = this.easeOut(this.bounce);
-    let start = Date.now();
-    let football = document.querySelector(".circle")
-    let id = requestAnimationFrame(function animate(time) {
-      console.log(time)
-      let interval = (Date.now() - start) / 2000;
-      if (interval > 1) interval = 1;
-
-      football.style.top = bounceEaseOut(interval) * 300 + 'px' // adjust the y axis
-      football.style.left = interval * 300 + 'px' // adjust the x axis
-
-      if (interval < 1) {
-        requestAnimationFrame(animate);
-      }
-
-    })
+    this.animationHelper({
+      duration: 2000,
+      render(yAxis, interval) {
+        let football = document.querySelector(".circle")
+        football.style.top = yAxis * 300 + 'px' // adjust the y axis
+        football.style.left = interval * 300 + 'px' // adjust the x axis
+      }, interpolator: (interval) => this.easeOut(this.bounce)(interval),
+    });
   }
 
   render() {
