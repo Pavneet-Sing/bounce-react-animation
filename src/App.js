@@ -100,8 +100,7 @@ export default class App extends Component {
       duration: 2000,
       render(yAxis, interval) {
         let football = document.querySelector(".circle")
-        football.style.top = yAxis * 300 + 'px' // adjust the y axis
-        football.style.left = interval * 300 + 'px' // adjust the x axis
+        football.style.transform = `translateY(${yAxis * 300}px) translateX(${interval * 300}px)`  // adjust the y and x axes
       }, interpolator: (interval) => this.easeOut(this.bounce)(interval),
     });
   }
