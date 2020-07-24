@@ -1,9 +1,10 @@
 <h1 align="center"> Bounce-React-Animaiton </h1>
-A project to demonstrate the use of `requestAnimationFrame` to implement animations method in React.
+
+A project to demonstrate the use of `requestAnimationFrame` function to implement animations in React.
 
 Introduction
 ------------
-Animations at runtime can be implemented using `requestAnimationFrame` method for effective results and best performance. This project includes move and bounce animation with `setInterval` and `requestAnimationFrame` methods.
+Animations at runtime can be implemented using `requestAnimationFrame` function for effective results and best performance. This project includes move and bounce animation with `setInterval` and `requestAnimationFrame` functions.
 
 Animations
 ---------
