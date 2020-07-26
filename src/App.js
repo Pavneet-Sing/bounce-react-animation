@@ -69,9 +69,9 @@ export default class App extends Component {
   */
   bounce = (interval) => {
     for (let a = 0, b = 1; 1; a += b, b /= 2) {
-      if (interval >= (7 - 4 * a) / 11) { // 4 and 7 cofficient are used to control bounce and smooth y axis fall
+      if (interval >= (7 - 4 * a) / 11) { // 4 and 7 coefficient are used to control bounce and smooth y axis fall
         return -Math.pow((11 - 6 * a - 11 * interval) / 4, 2) + Math.pow(b, 2) // Math.pow(b, 2) to keep the same x axis for bounce
-        // -Math.pow((11 - 6 * a - 11 * interval) / 4, 2) ajust the y axis up and down
+        // -Math.pow((11 - 6 * a - 11 * interval) / 4, 2) adjust the y axis up and down
       }
     }
   }
